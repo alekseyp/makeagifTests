@@ -6,15 +6,14 @@ services:
      - "80:80"
     volumes:
      - .:/var/www/html
-  hub:
-    image: selenium/hub
-    ports:
-      - "4444:4444"
-  firefox:
-    image: selenium/node-firefox
-    links:
-      - hub
-  chrome:
-    image: selenium/node-chrome
-    links:
-      - hub
+  selenium_hub:
+      image: 'selenium/hub:latest'
+      ports:
+      - '4444:4444'
+
+  selenium_node:
+      image: 'selenium/node-firefox:latest'
+      depends_on:
+        - selenium_hub
+      environment:
+        HUB_PORT_4444_TCP_ADDR: selenium_hub
