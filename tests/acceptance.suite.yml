@@ -8,6 +8,7 @@ class_name: AcceptanceTester
 modules:
     enabled:
         - WebDriver   # used for acceptance testing
+        - Helper\Acceptance
     config:
         WebDriver:
             url: 'http://makeagif.com/'
