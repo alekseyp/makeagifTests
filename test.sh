@@ -21,7 +21,9 @@ rm -r ./tests/_output/
         fi
     fi
 
-test_cmd="$test_cmd --steps"
+    if [[ "$@" == *"steps"* ]]; then
+      test_cmd="$test_cmd --steps"
+    fi
 
 echo $test_cmd
 eval $test_cmd
