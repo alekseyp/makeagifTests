@@ -37,13 +37,11 @@ class AuthCest
         $I->fillField('logpassword', $password);
         $I->click(['class' => 'label', 'for' => 'remember']);
         $I->executeJS('$(".vex-overlay").hide();');
-//        $I->executeJS('$(".vex.vex-theme-plain").hide();'); @todo need to put down this layer
-        $I->click(['class' => 'button', 'value' => 'Sign in']);
+        $I->click('form#login .button._color_yellow');
         $I->waitForElementNotVisible('.vex-content');
 
         $I->reloadPage();
 
-        $I->waitForElement('.user-info', 30);
         $I->see('nayf', '.user-info');
     }
 
