@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
 
+# clean _output dir (errors screens)
 chmod -R 777 ./tests/_output/
 rm -r ./tests/_output/
+
+# find IP from selenium container
+seleniumIP=$(docker inspect makeagiftests_selenium_hub_1 | grep -i \"IPAddress\" | grep -oE "\b([0-9]{1,3}\.){3}[0-9]{1,3}\b" | uniq)
+docker exec -ti makeagiftests_web_1 /root/link.sh  $seleniumIP "selenium.sp.local"
 
     testType=$1
     testSuite=$2

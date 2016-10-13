@@ -13,6 +13,6 @@ modules:
         WebDriver:
             url: 'http://makeagif.com/'
             browser: firefox
-            host: 172.20.0.3
+            host: selenium.sp.local
             port: 4444
             window_size: 1600x900

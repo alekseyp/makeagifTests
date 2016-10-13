@@ -11,3 +11,5 @@ RUN docker-php-ext-install zip
 # Install Codeception
 RUN wget http://codeception.com/codecept.phar -O /usr/local/bin/codecept
 RUN chmod +x /usr/local/bin/codecept
+
+ADD link.sh /root/link.sh
