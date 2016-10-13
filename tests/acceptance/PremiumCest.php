@@ -5,6 +5,12 @@
  */
 class PremiumCest
 {
+    public function _before(AcceptanceTester $I)
+    {
+        $I->amOnPage('/');
+        $I->setCookie('LetMeIn', 'ImAwesome');
+    }
+
     /**
      * @param AcceptanceTester $I
      */

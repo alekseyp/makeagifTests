@@ -5,13 +5,40 @@
  */
 class AuthCest
 {
+    public function _before(AcceptanceTester $I)
+    {
+        $I->amOnPage('/');
+        $I->setCookie('LetMeIn', 'ImAwesome');
+        $I->reloadPage();
+//        document.cookie = "LetMeIn=ImAwesome; path=/";
+    }
+
+    public function signUp(AcceptanceTester $I)
+    {
+        $I->click('Sign up', '.topbar__user');
+        $I->waitForElementVisible('.vex-content');
+
+        $I->see('Sign up for MakeAGif', 'h1');
+        $I->see('Benefits of a premium membership', 'a[href="/premium"]');
+        $I->see('Facebook sign in', 'a[href="/login/facebook"]');
+        $I->see('Twitter sign in', 'a[href="/login/twitter"]');
+
+        $I->seeElement('input', ['name' => 'email']);
+        $I->seeElement('input', ['name' => 'password']);
+        $I->seeElement('input', ['name' => 'cpassword']);
+        $I->seeElement('input', ['name' => 'username']);
+        $I->seeElement('iframe', ['title' => 'recaptcha widget']);
+        $I->see('sign me up!', 'button.button');
+        $I->see('Already have an account? Login here.');
+
+        // @todo need to disable recapthca
+    }
+
     /**
      * @param AcceptanceTester $I
      */
     public function login(AcceptanceTester $I)
     {
-        $I->amOnPage('/');
-
         /**
          * Check all elements
          */
@@ -43,26 +70,5 @@ class AuthCest
         $I->reloadPage();
 
         $I->see('nayf', '.user-info');
-    }
-
-    public function signUp(AcceptanceTester $I)
-    {
-        $I->amOnPage('/');
-
-        $I->click('Sign up', '.topbar__user');
-        $I->waitForElementVisible('.vex-content');
-
-        $I->see('Sign up for MakeAGif', 'h1');
-        $I->see('Benefits of a premium membership', 'a[href="/premium"]');
-        $I->see('Facebook sign in', 'a[href="/login/facebook"]');
-        $I->see('Twitter sign in', 'a[href="/login/twitter"]');
-
-        $I->seeElement('input', ['name' => 'email']);
-        $I->seeElement('input', ['name' => 'password']);
-        $I->seeElement('input', ['name' => 'cpassword']);
-        $I->seeElement('input', ['name' => 'username']);
-        $I->seeElement('iframe', ['title' => 'recaptcha widget']);
-        $I->see('sign me up!', 'button.button');
-        $I->see('Already have an account? Login here.');
     }
 }

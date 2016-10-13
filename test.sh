@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 # clean _output dir (errors screens)
-chmod -R 777 ./tests/_output/
 rm -r ./tests/_output/
 
 # find IP from selenium container

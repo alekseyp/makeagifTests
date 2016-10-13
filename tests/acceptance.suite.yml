@@ -11,7 +11,7 @@ modules:
         - Helper\Acceptance
     config:
         WebDriver:
-            url: 'http://makeagif.com/'
+            url: 'http://magstag.net/'
             browser: firefox
             host: selenium.sp.local
             port: 4444
