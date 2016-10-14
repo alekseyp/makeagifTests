@@ -12,3 +12,8 @@
 ## Run tests
 
 * ./test.sh
+
+## Not tested
+
+*Can user sign in with Facebook (need config for API)
+*Can user sign in with Twitter

@@ -9,10 +9,11 @@ modules:
     enabled:
         - WebDriver   # used for acceptance testing
         - Helper\Acceptance
+#        - Facebook
     config:
         WebDriver:
             url: 'http://magstag.net/'
             browser: firefox
-            host: selenium.sp.local
+            host: makeagiftests_selenium_hub_1
             port: 4444
             window_size: 1600x900

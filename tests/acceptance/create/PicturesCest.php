@@ -86,11 +86,19 @@ class PicturesCest
         $I->waitForElement('.vex.vex-theme-plain');
         $I->waitForElementNotVisible('.vex.vex-theme-plain', 30);
 
-        $I->wait(1);
-        $I->waitForJS('return document.readyState=="complete"');
+        $I->wait(10);
+        $I->waitForJS('return document.readyState=="complete"', 30);
 
         $I->see('Beautiful', 'h1');
         $I->see('#beautiful', '.tags');
         $I->see('#b1', '.tags');
+    }
+
+    /**
+     * @param AcceptanceTester $I
+     */
+    public function premium(AcceptanceTester $I)
+    {
+
     }
 }
