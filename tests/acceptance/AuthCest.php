@@ -70,5 +70,43 @@ class AuthCest
         $I->reloadPage();
 
         $I->see('nayf', '.user-info');
+
+        /**
+         * Check Settings
+         */
+        $I->amOnPage('/settings');
+
+        $I->see('GENERAL', '.toolbar ._state_active');
+        $I->see('ACCOUNTS', '.toolbar');
+        $I->see('SUBSCRIPTIONS', '.toolbar');
+
+        $I->see('Upgrade to premium to unlock more options', 'a.button');
+        $I->see('/user/nayf');
+
+        /**
+         * Check change info
+         */
+        $username = 'nayf';
+        $I->submitForm('form#userSettings', [
+            'email' => $email . '1',
+            'username' => $username . '1',
+            'display_name' => $username . '1',
+        ]);
+        $I->reloadPage();
+
+        $I->seeElement('form#userSettings #email', ['value' => $email . '1']);
+        $I->seeElement('form#userSettings #username', ['value' => $username . '1']);
+        $I->seeElement('form#userSettings #display_name', ['value' => $username . '1']);
+
+        $I->submitForm('form#userSettings', [
+            'email' => $email,
+            'username' => $username,
+            'display_name' => $username,
+        ]);
+        $I->reloadPage();
+
+        $I->seeElement('form#userSettings #email', ['value' => $email]);
+        $I->seeElement('form#userSettings #username', ['value' => $username]);
+        $I->seeElement('form#userSettings #display_name', ['value' => $username]);
     }
 }
